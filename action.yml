@@ -1,0 +1,17 @@
+name: 'kube-linter-action'
+description: 'A GitHub action to run kube-linter'
+inputs:
+  kube-linter-version:
+    description: 'The version of kube-linter to use'
+    required: false
+    default: '0.2.0'
+  manifests:
+    description: 'The files or directories to scan for Kubernetes manifests'
+    required: true
+outputs: {}
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.kube-linter-version }}
+    - ${{ inputs.manifests }}
